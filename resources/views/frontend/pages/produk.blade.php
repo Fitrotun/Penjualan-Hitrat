@@ -1,6 +1,7 @@
 @extends('frontend.include.base')
 
 @section('content')
+@include('frontend.include.nav')
 
 <!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -8,7 +9,7 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Original</p>
+						<p>Halal dan Ampuh</p>
 						<h1>Product</h1>
 					</div>
 				</div>
@@ -34,6 +35,7 @@
 								</p>
 								<a href="/detail_produk/{{ $p->id }}" class="item"><i class="item-primary me-0"></i>Selengkapnya</a>			
 								<p class="product-price">{{ $p->price }}</p>
+								<strong>Stok :</strong> {{ $p->stok }} <br><br>
 								<ul>
 									
 									<a href="https://shp.ee/6weg9zr" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Shopee</a><br><br>

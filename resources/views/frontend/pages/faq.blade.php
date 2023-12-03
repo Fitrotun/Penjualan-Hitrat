@@ -1,6 +1,7 @@
 @extends('frontend.include.base')
 
 @section('content')
+@include('frontend.include.nav')
 
 <div class="breadcrumb-section breadcrumb-bg">
     <div class="container">
@@ -33,7 +34,17 @@
             <div class="row justify-content-center">
                 <!-- FAQ Area-->
                 <div class="col-12 col-sm-10 col-lg-8">
-                    <div class="accordion faq-accordian" id="faqAccordion">
+                    
+                        <div >
+                            <a><img src="assets/img/qna.jpg" alt=""></a>
+                        </div>
+                        <div class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                            <i class="lni-emoji-sad"></i>
+                            <p class="mb-0 px-2">Tidak menemukan jawaban?</p>
+                            <a href="whatsapp://send?text=Hello&phone=+628122822578""> Hubungi Penjual !</a>
+                        </div>
+                   
+                    {{-- <div class="accordion faq-accordian" id="faqAccordion">
                         <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                             <div class="card-header" id="headingOne">
                                 <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Apakah produknya aman, soalnya punya kucing dirumah?<span class="lni-chevron-up"></span></h6>
@@ -54,8 +65,8 @@
                                     
                                 </div>
                             </div>
-                        </div>
-                        <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        </div> --}}
+                        {{-- <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                             <div class="card-header" id="headingThree">
                                 <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Apakah produk mudah larut?<span class="lni-chevron-up"></span></h6>
                             </div>
@@ -73,7 +84,7 @@
                         <p class="mb-0 px-2">Tidak menemukan jawaban?</p>
                         <a href="whatsapp://send?text=Hello&phone=+628122822578""> Hubungi Penjual !</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

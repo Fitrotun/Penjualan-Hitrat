@@ -27,6 +27,7 @@ class ProductSeeder extends Seeder
                 sehingga tidak membuat curiga tikus lainya. 
                 Tikus akan mati kurus kering tanpa meninggalkan bau busuk yang menyengat.                                ',
                 'price' => 10000,
+                'stok' => 20,
                 'rating'=> 5,
                 'id_category' => 2,
             ],
@@ -39,6 +40,7 @@ class ProductSeeder extends Seeder
                 sehingga tidak membuat curiga tikus lainya. 
                 Tikus akan mati kurus kering tanpa meninggalkan bau busuk yang menyengat.                                ',
                 'price' => 35000,
+                'stok' => 20,
                 'rating'=> 5,
                 'id_category' => 2,
             ],
@@ -51,6 +53,7 @@ class ProductSeeder extends Seeder
                 sehingga tidak membuat curiga tikus lainya. 
                 Tikus akan mati kurus kering tanpa meninggalkan bau busuk yang menyengat.                                ',
                 'price' => 66000,
+                'stok' => 20,
                 'rating'=> 5,
                 'id_category' => 2,
             ],
@@ -63,6 +66,7 @@ class ProductSeeder extends Seeder
                 sehingga tidak membuat curiga tikus lainya. 
                 Tikus akan mati kurus kering tanpa meninggalkan bau busuk yang menyengat.                                ',
                 'price' =>  120000,
+                'stok' => 20,
                 'rating'=> 5,
                 'id_category' => 2,
                 
@@ -76,6 +80,7 @@ class ProductSeeder extends Seeder
                 sehingga tidak membuat curiga tikus lainya. 
                 Tikus akan mati kurus kering tanpa meninggalkan bau busuk yang menyengat.                                ',
                 'price' =>  55000,
+                'stok' => 20,
                 'rating'=> 5,
                 'id_category' => 1,
                 

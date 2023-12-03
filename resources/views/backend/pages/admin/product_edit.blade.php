@@ -61,6 +61,16 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="stok" class="form-label">Stok</label>
+            <input type="text" class="form-control @error('stok') is-invalid @enderror"
+                id="exampleInputPassword1" name="stok" value="{{ $products->stok }}">
+            @error('stook')
+                <div class="invalid-feedback">
+                    Stok tidak boleh kosong
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="category" class="form-label">Pilih Category</label>
             <select class="form-select @error('id_category') is-invalid @enderror" aria-label="Default select example"
             name="id_category">

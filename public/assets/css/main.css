@@ -46,7 +46,7 @@ body{margin-top:20px;}
     border-bottom-color: #ebebeb;
 }
 .faq-accordian .card .card-header h6 {
-    cursor: pointer;
+    
     padding: 1.75rem 2rem;
     color: #3f43fd;
     display: -webkit-box;
@@ -129,7 +129,7 @@ body img {
 }
 
 a {
-  cursor: pointer;
+  
   text-decoration: none;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -710,6 +710,15 @@ nav.main-menu ul li:last-child a {
 nav.main-menu > ul li:last-child {
   float: right;
 }
+.navbar-nav .nav-link {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.navbar-nav .dropdown-menu {
+  position: static;
+}
+
 
 .site-logo {
   float: left;

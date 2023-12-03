@@ -1,6 +1,7 @@
 @extends('frontend.include.base')
 
 @section('content')
+@include('frontend.include.nav')
 
 <!-- hero area -->
 	<div class="hero-area hero-bg">
@@ -17,7 +18,7 @@
 							</div>
 							<br>
 							<div class="container-searchbar">
-								<form action="{{ url('searchProduct') }}" method="GET" class="searchbar" role="search">
+								<form action="/product/search" method="GET" class="searchbar" role="search">
 									<input type="search" name="search" id="searchbar" value="" placeholder="Cari Product! ">
 									<button type="submit"> <img src={{ asset('assets/img/search.png') }} alt=""></button>
 								</form>
@@ -222,15 +223,6 @@
 						
 					</div>
 				</div>
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-					  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					  <li class="page-item"><a class="page-link" href="#1">1</a></li>
-					  <li class="page-item"><a class="page-link" href="#">2</a></li>
-					  <li class="page-item"><a class="page-link" href="#">3</a></li>
-					  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-					</ul>
-				  </nav>
 			</div>
 		</div>
 	</div>

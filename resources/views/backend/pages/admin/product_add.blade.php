@@ -65,7 +65,16 @@
                 </div>
             @enderror
         </div>
-        
+        <div class="mb-3">
+            <label for="stok" class="form-label">Stok</label>
+            <input type="text" class="form-control @error('stok') is-invalid @enderror" id="exampleInputEmail1"
+            aria-describedby="emailHelp" name="stok placeholder="stok" >
+            @error('stok')
+                <div class="invalid-feedback">
+                    Stok tidak boleh kosong
+                </div>
+            @enderror
+        </div>
         <div class="col-md-6 mb-3">
             <label for="category" class="form-label">Pilih Category</label>
             <select class="form-select @error('id_category') is-invalid @enderror" aria-label="Default select example"

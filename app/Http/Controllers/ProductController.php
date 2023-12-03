@@ -34,16 +34,19 @@ class ProductController extends Controller
 
      }
 
-     public function searchProduct(Request $request)
+     public function search(Request $request)
     {
         // dd(request('search'));
-        if($request->search){
-            $searchProduct = Product::where('name', 'LIKE', '%'.$request->search.'%')->latest()->paginate(15);
-            return view('frontend.pages.search', compact('searchProduct'));
+        if($request->has('search')){
+            $products =Product::where('name','LIKE','%'.$request->search.'%')->get();
+            // $searchProduct = Product::where('name', 'LIKE', '%'.$request->search.'%')->latest()->paginate(15);
+            // return view('frontend.pages.search', compact('searchProduct'));
         }
         else{
-            return redirect()->back()->with('message', 'Empty Search');
+            $products = Product::all();
+            // return redirect()->back()->with('message', 'Empty Search');
         }
+        return view('frontend.pages.home', ['products' =>$products]);
     }
     /**
      * Show the form for creating a new resource.

@@ -13,7 +13,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TransactionController;
-use App\Models\Product;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,8 +50,11 @@ Route::resource('/category', CategoryController::class);
 
 // user
 Route::resource('/user', UserController::class);
-// Route::get('/pesan', 'UserController@pesan');
-// Route::get('/get-pesan', 'UserController@flus');
+Route::get('/profile', PenggunaController::class);
+Route::post('/profile', [PenggunaController::class, 'update']);
+Route::get('/history',  [PenggunaController::class, 'index']);
+Route::get('/struk/{id}', [PenggunaController::class, 'struk']);
+
 // Faq
 Route::resource('/faq', FaqController::class);
 // Product
@@ -61,31 +64,14 @@ Route::get('/product', [ProductController::class,'index'])->name('product.index'
 Route::post('/product', [ProductController::class,'store'])->name('product.store');
 Route::post('/product', [ProductController::class, 'store'])->name('product');
 Route::get('/produk', [ProductController::class,'lindex']);
-Route::get('/search',[ProductController::class, 'searchProduct'] );
+Route::get('/product/search',[ProductController::class, 'search'] );
 
 // cart
 Route::get('/detail_produk/{id}', [PenggunaController::class, 'dcart']);
 
 // // transaksi
 Route::post('/pesan/{id}', [PenggunaController::class, 'pesan']);
-Route::get('/keranjang', [PenggunaController::class, 'keranjang']);
+Route::get('/check_out', [PenggunaController::class, 'check_out']);
 Route::get('/konfirmasi', [PenggunaController::class, 'konfirmasi']);
 Route::get('/keranjang/{id}/delete', [PenggunaController::class, 'delete']);
 
-// Route::group(['middleware' => ['auth','CekLevel:admin,user']], function() {
-//     Route::get('/cart', [CartController::class, 'cart']);
-
-//     // Pesanan
-//     Route::post('/pesan/{id}', [TransactionController::class, 'pesan']);
-//     Route::get('/keranjang', [TransactionController::class, 'keranjang']);
-//     Route::get('/konfirmasi', [TransactionController::class, 'konfirmasi']);
-//     Route::get('/keranjang/{id}/delete', [TransactionController::class, 'delete']);
-
-
-//     // Route::get('profile', [TransactionController::class, 'pindex']);
-//     // Route::post('profile', [TransactionController::class, 'update']);
-
-
-//     // Route::get('history',  [HistoryController::class, 'index']);
-//     // Route::get('history/{id}',  [HistoryController::class, 'detail']);
-// });

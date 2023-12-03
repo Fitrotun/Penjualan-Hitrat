@@ -26,6 +26,9 @@
                   Harga 
                 </th>
                 <th>
+                  Stok 
+                </th>
+                <th>
                   Category
                 </th>
                 <th>
@@ -53,6 +56,9 @@
                 </td>
                 <td>
                   {{ $i->price}}
+                </td>
+                <td>
+                  {{ $i->stok}}
                 </td>
                 <td>
                    {{$i->category->name }}

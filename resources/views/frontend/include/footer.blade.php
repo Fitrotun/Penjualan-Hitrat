@@ -66,9 +66,8 @@
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
 						<ul>
-							<li><a href="https://www.facebook.com/idafitrotunkhasanah"  target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="https://x.com/itsdaa11_" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="https://www.instagram.com/idaafitrotunn_" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="https://linktr.ee/hitrat.indonesia"  target="_blank"><i class="fas fa-link"></i></a></li>
+							<li><a href="https://www.instagram.com/hitrat.indonesia" target="_blank"><i class="fab fa-instagram"></i></a></li>
 							<li><a href="whatsapp://send?text=Hello&phone=+628122822578" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 							
 						</ul>

@@ -1,6 +1,7 @@
 @extends('frontend.include.base')
 
 @section('content')
+@include('frontend.include.nav')
 <!-- breadcrumb-section -->
 
 <div class="breadcrumb-section breadcrumb-bg">
