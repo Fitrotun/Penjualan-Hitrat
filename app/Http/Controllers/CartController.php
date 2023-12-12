@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index(){
-
-    }
-
-    public function create(){
-
-    }
 
     public function store(Request $request){
         $validated = $request->validate([
