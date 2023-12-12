@@ -1,7 +1,7 @@
 @extends('frontend.include.base')
 
 @section('content')
-	
+
 	<!-- menu start -->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #fff;">
 		<div class="container-fluid mx-lg-5">
@@ -43,7 +43,7 @@
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 				  <li>
 					<?php
-					  $cart_utama = \App\Models\Cart::where('id_user', session('id'))->where('status',0)->first();
+					  $cart_utama = \App\Models\Cart::where('id_user', session('id'))->first();
 					  if(!empty($cart_utama))
 					  {
 						$notif = \App\Models\Transaction::where('id_cart', $cart_utama->id)->count();
@@ -71,8 +71,8 @@
 		  </div>
 		</div>
 	  </nav>
-	
-					
+
+
     <br>
     <br>
     <br>
@@ -83,13 +83,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 mt-5">
-                            <img width="300px" height="300px" src="{{ asset($products->image) }}" alt="" class="rounded mx-auto d-block" width="100%" alt=""> 
+                            <img width="300px" height="300px" src="{{ asset($products->image) }}" alt="" class="rounded mx-auto d-block" width="100%" alt="">
                         </div>
                         <div class="col-md-5 mt-3">
                             <h2>{{ $products->name }}</h2>
                             <div class="rating">
                                 @php
-                                    $rating = $products->rating; 
+                                    $rating = $products->rating;
                                 @endphp
                                 @for ($i = 1; $i <= $rating; $i++)
                                     <span class="star fas fa-star"></span>
@@ -108,14 +108,16 @@
                                         <td>:</td>
                                         <td>{{ $products->description }}</td>
                                     </tr>
-                                   
+
                                     <tr>
                                         <td>Jumlah Pesan</td>
                                         <td>:</td>
                                         <td>
-                                            <form method="post" action="{{ url('pesan') }}/{{ $products->id }}" >
+                                            <form method="post" action="{{route('cart.store')}}" >
                                                 @csrf
-                                                <input type="text" name="jumlah_pesan" class="form-control" required="">
+                                                <input type="hidden" name="id_user" value="{{session('id')}}">
+                                                <input type="hidden" name="id_product" value="{{$products->id}}">
+                                                <input type="text" name="quantity" class="form-control" required="">
                                                 <button type="submit" class="btn btn-primary mt-2"><i class="fa fa-shopping-cart"></i> Masukkan Keranjang</button>
                                             </form>
                                         </td>
@@ -151,10 +153,10 @@
                                                 <input type="submit" class="btn btn-primary offset-md-10" value="Submit">
                                             </form>
                                         </div>
-                                
+
                                     </div>
-                                </div>    
-                            </div>  
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

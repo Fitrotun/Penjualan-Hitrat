@@ -1,4 +1,4 @@
-	
+
 	<!-- menu start -->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #fff;">
 		<div class="container-fluid mx-lg-5">
@@ -41,7 +41,7 @@
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 				  <li>
 					<?php
-					  $cart_utama = \App\Models\Cart::where('id_user', session('id'))->where('status',0)->first();
+					  $cart_utama = \App\Models\Cart::where('id_user', session('id'))->first();
 					  if(!empty($cart_utama))
 					  {
 						$notif = \App\Models\Transaction::where('id_cart', $cart_utama->id)->count();
@@ -69,7 +69,6 @@
 		  </div>
 		</div>
 	  </nav>
-	
-	
 
-					
+
+

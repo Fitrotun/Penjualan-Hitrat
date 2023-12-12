@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
+    protected $fillable = [
+        'id_user'
+    ];
     public function user()
 	{
-	      return $this->belongsTo(User::class);
+	      return $this->belongsTo(User::class, 'id_user', 'id');
 	}
-
-    public function transaction() 
+    public function cartitem()
 	{
-	     return $this->hasMany(Transaction::class);
+	     return $this->hasMany(CartItem::class);
 	}
 }

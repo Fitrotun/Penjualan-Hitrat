@@ -31,19 +31,19 @@
 								</div>
 								<h3>{{ $p->name }}</h3>
 								<p class="card-text">
-									{{ mb_strimwidth($p->description, 0, 40, "..."); }}<br>
+									{{ mb_strimwidth($p->description, 0, 40, "...") }}<br>
 								</p>
-								<a href="/detail_produk/{{ $p->id }}" class="item"><i class="item-primary me-0"></i>Selengkapnya</a>			
+								{{-- <a href="/detail_produk/{{ $p->id }}" class="item"><i class="item-primary me-0"></i>Selengkapnya</a> --}}
 								<p class="product-price">{{ $p->price }}</p>
 								<strong>Stok :</strong> {{ $p->stok }} <br><br>
 								<ul>
-									
+
 									<a href="https://shp.ee/6weg9zr" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Shopee</a><br><br>
 									<a href="https://s.lazada.co.id/s.nM8Ol" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Lazada</a><br><br>
-									<a href="https://tokopedia.link/l1aok6q48Eb" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Toko Pedia</a><br><br>
-									<a href="#" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Pesan</a>
+									<a href="https://tokopedia.link/l1aok6q48Eb" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Tokopedia</a><br><br>
+									<a href="/detail_produk/{{ $p->id }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Pesan</a>
 								</ul>
-								
+
 							</div>
 						</div>
 					</div>
