@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->dateTime('order_date');
             $table->enum('status', ['menunggu pembayaran','verifikasi pembayaran', 'diproses', 'dikirim', 'sukses', 'gagal']);
             $table->timestamps();

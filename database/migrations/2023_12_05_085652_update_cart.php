@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('carts', function (Blueprint $table) {
+            $table->dropForeign('carts_id_user_foreign');
+            $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete()->restrictOnUpdate();
             $table->dropColumn("tanggal");
             $table->dropColumn("status");
             $table->dropColumn("kode");
