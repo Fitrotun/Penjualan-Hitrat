@@ -20,15 +20,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $orders = Order::where(['id_user' => session('id')])->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $data = [
+            'orders' => $orders,
+        ];
+
+        return view('frontend.pages.order-list', $data);
     }
 
     /**
@@ -112,8 +110,9 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        $item = Order::destroy($id);
+        return redirect(route('order.index'));
     }
 }

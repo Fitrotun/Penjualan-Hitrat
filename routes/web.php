@@ -75,8 +75,10 @@ Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/add', [CartController::class, 'store'])->name('cart.store');
 Route::get('cart/delete/{id}', [CartController::class, 'destroyItem'])->name('cart.item.destroy');
 
+Route::get('order', [OrderController::class, 'index'])->name('order.index');
 Route::get('order/{id}', [OrderController::class, 'show'])->name('order.show');
 Route::post('order/add', [OrderController::class, 'store'])->name('order.store');
+Route::get('order/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 
 // // transaksi
 Route::post('/pesan/{id}', [PenggunaController::class, 'pesan']);

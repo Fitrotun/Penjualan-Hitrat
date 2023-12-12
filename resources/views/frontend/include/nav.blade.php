@@ -44,13 +44,24 @@
 					  $cart_utama = \App\Models\Cart::where('id_user', session('id'))->first();
 					  if(!empty($cart_utama))
 					  {
-						$notif = \App\Models\Transaction::where('id_cart', $cart_utama->id)->count();
+                        $notif = \App\Models\CartItem::where('id_cart', $cart_utama->id)->count();
 					  }
 					?>
-					<a class="dropdown-item" href="{{ url('check-out') }}"><i class="fas fa-shopping-cart"></i>
+					<a class="dropdown-item" href="{{ route('cart.show') }}"><i class="fas fa-shopping-cart"></i>
 						Keranjang
 						@if(!empty($notif))
 						  <span class="badge badge-danger">{{ $notif }}</span>
+						@endif
+					</a>
+				  </li>
+                  <li>
+					<?php
+					  $orders = \App\Models\Order::where('id_user', session('id'))->count();
+					?>
+					<a class="dropdown-item" href="{{ route('order.index') }}"><i class="fas fa-shopping-cart"></i>
+						Order
+						@if(!empty($orders))
+						  <span class="badge badge-danger">{{ $orders }}</span>
 						@endif
 					</a>
 				  </li>
