@@ -15,6 +15,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -74,6 +75,8 @@ Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/add', [CartController::class, 'store'])->name('cart.store');
 Route::get('cart/delete/{id}', [CartController::class, 'destroyItem'])->name('cart.item.destroy');
 
+Route::get('order/{id}', [OrderController::class, 'show'])->name('order.show');
+Route::post('order/add', [OrderController::class, 'store'])->name('order.store');
 
 // // transaksi
 Route::post('/pesan/{id}', [PenggunaController::class, 'pesan']);

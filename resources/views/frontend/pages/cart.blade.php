@@ -17,18 +17,20 @@
                                 <th>Nama Barang</th>
                                 <th>Jumlah</th>
                                 <th>Harga</th>
+                                <th>total</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         @if (isset($items))
                         <tbody>
-                            <?php $no = 1; $total_harga = 0; ?>
+                            <?php $no = 1; $total_harga = 0; $product_data = [];?>
                             @foreach($items as $item)
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->product->name }}</td>
                                 <td>{{ $item->quantity }}</td>
                                 <td>Rp. {{ number_format($item->product->price) }}</td>
+                                <td>Rp. {{number_format($item->product->price*$item->quantity)}}</td>
                                 <td>
                                     <a href="{{route('cart.item.destroy', $item->id)}}">
                                         <button class="btn btn-danger" type="button"><i class="fa-solid fa-trash"></i></button>
@@ -36,16 +38,27 @@
                                 </td>
                             </tr>
                             @php
-                                $total_harga += ($item->product->price*$item->quantity)
+                                $total_harga += ($item->product->price*$item->quantity);
+                                $p = [];
+                                $p['id_product'] = $item->product->id;
+                                $p['quantity'] = $item->quantity;
+                                $p['total_price'] = $total_harga;
+
+                                array_push($product_data, $p);
                             @endphp
                             @endforeach
                             <tr>
-                                <td colspan="3" align="right"><strong>Total Harga :</strong></td>
+                                <td colspan="4" align="right"><strong>Total Harga :</strong></td>
                                 <td><strong>Rp. {{ number_format($total_harga) }}</strong></td>
                                 <td>
-                                    <a href="{{ url('konfirmasi') }}" class="btn btn-success" onclick="return confirm('Anda yakin akan Check Out ?');">
-                                        <i class="fa fa-shopping-cart"></i> Check Out
-                                    </a>
+                                    <form action="{{route('order.store')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="id_user" value="{{session('id')}}">
+                                        <input type="hidden" name="products" value="{{json_encode($product_data)}}">
+                                        <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin akan Check Out ?');">
+                                            <i class="fa fa-shopping-cart"></i> Check Out
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>
