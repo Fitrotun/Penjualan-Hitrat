@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AboutController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -65,9 +68,17 @@ Route::post('/product', [ProductController::class,'store'])->name('product.store
 Route::post('/product', [ProductController::class, 'store'])->name('product');
 Route::get('/produk', [ProductController::class,'lindex']);
 Route::get('/product/search',[ProductController::class, 'search'] );
+Route::get('/detail_produk/{id}', [ProductController::class, 'show'])->name('detail_produk');
 
 // cart
-Route::get('/detail_produk/{id}', [PenggunaController::class, 'dcart']);
+Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
+Route::post('/cart/add', [CartController::class, 'store'])->name('cart.store');
+Route::get('cart/delete/{id}', [CartController::class, 'destroyItem'])->name('cart.item.destroy');
+
+Route::get('order', [OrderController::class, 'index'])->name('order.index');
+Route::get('order/{id}', [OrderController::class, 'show'])->name('order.show');
+Route::post('order/add', [OrderController::class, 'store'])->name('order.store');
+Route::get('order/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 
 // // transaksi
 Route::post('/pesan/{id}', [PenggunaController::class, 'pesan']);

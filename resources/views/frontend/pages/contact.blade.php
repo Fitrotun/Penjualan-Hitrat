@@ -65,7 +65,4 @@
 		</div>
 	</div>
 	<!-- end contact form -->
-
-   
-
 @endsection

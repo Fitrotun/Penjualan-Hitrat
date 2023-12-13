@@ -7,13 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    public function product()
+    protected $fillable = [
+        'id_order',
+        'id_payment_method',
+        'total_harga',
+        'transaction_date',
+        'status',
+        'bukti_pembayaran',
+    ];
+
+
+    public function order()
 	{
-	      return $this->belongsTo(Product::class);
+	      return $this->belongsTo(Order::class, 'id_order', 'id');
 	}
 
-	public function cart()
+	public function payment_method()
 	{
-	      return $this->belongsTo(Cart::class);
+	      return $this->belongsTo(PaymentMethod::class, 'id_payment_method', 'id');
 	}
 }

@@ -23,10 +23,10 @@
                   Deskripsi
                 </th>
                 <th>
-                  Harga 
+                  Harga
                 </th>
                 <th>
-                  Stok 
+                  Stok
                 </th>
                 <th>
                   Category
@@ -47,12 +47,12 @@
                 {{-- @if ($i->image)
                   <img width="60px" height="60px" src="{{ asset($i->image) }}" >
                   @else
-                    <p>tidak ada gambar</p>                   
+                    <p>tidak ada gambar</p>
                    @endif
                   <img width="60px" height="60px" src="{{ asset('image/').$i->image }}" > --}}
                 </td>
                 <td>
-                  {{ mb_strimwidth($i->description, 0, 10, "..."); }}
+                  {{ mb_strimwidth($i->description, 0, 10, "...") }}
                 </td>
                 <td>
                   {{ $i->price}}
@@ -72,7 +72,7 @@
                     {{-- Delete  --}}
                       <button class="badge bg-danger border-0 " onclick="return confirm('apakah anda yakin ?')"><i class="mdi mdi-delete-forever"></i></button>
                     </button>
-                    </form> 
+                    </form>
                 </td>
               </tr>
               @endforeach
