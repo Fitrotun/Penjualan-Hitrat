@@ -21,7 +21,7 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        @if (isset($items))
+                        @if (isset($items) && !$items->isEmpty())
                         <tbody>
                             <?php $no = 1; $total_harga = 0; $product_data = [];?>
                             @foreach($items as $item)
@@ -50,14 +50,25 @@
                             <tr>
                                 <td colspan="4" align="right"><strong>Total Harga :</strong></td>
                                 <td><strong>Rp. {{ number_format($total_harga) }}</strong></td>
-                                <td>
-                                    <form action="{{route('order.store')}}" method="post">
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="right"><strong>Metode Pembayaran :</strong></td>
+                                <td colspan="2">
+                                    <form action="{{route('order.store')}}" method="POST">
                                         @csrf
                                         <input type="hidden" name="id_user" value="{{session('id')}}">
                                         <input type="hidden" name="products" value="{{json_encode($product_data)}}">
-                                        <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin akan Check Out ?');">
-                                            <i class="fa fa-shopping-cart"></i> Check Out
-                                        </button>
+                                        <select name="id_payment_method" id="" class="form-select w-100">
+                                            <option value="">Pilih Metode</option>
+                                            @foreach ($payment_methods as $item)
+                                            <option value="{{$item->id}}">{{$item->nama_bank}}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="mt-4 w-100">
+                                            <button type="submit" class="btn btn-success w-100" onclick="return confirm('Anda yakin akan Check Out ?');">
+                                                <i class="fa fa-shopping-cart"></i> Check Out
+                                            </button>
+                                        </div>
                                     </form>
                                 </td>
                             </tr>
@@ -65,8 +76,11 @@
                         @else
                         <tbody>
                             <tr>
-                                <td colspan="5">
+                                <td colspan="6">
                                     <h2 align="center">Keranjang Kosong!</h2>
+                                    <div class="text-center mt-2 mb-2">
+                                        <a href="/produk" class="btn btn-primary text-center">Kembali Lihat Produk</a>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

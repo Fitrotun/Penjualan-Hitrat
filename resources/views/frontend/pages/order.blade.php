@@ -44,9 +44,21 @@
                         </tbody>
                     </table>
                     <div>
-                        <h4>Pembayaran (BRI)</h4>
-                        <p>No Rek: <strong>09908876757687917531</strong></p>
-                        <p>atas nama : <strong>Dedi</strong></p>
+                        <h4>Metode Pembayaran</h4>
+                        <table>
+                            <tr>
+                                <th>Bank</th>
+                                <td>{{$payment->nama_bank}}</td>
+                            </tr>
+                            <tr>
+                                <th>Nama</th>
+                                <td>{{$payment->nama_rek}}</td>
+                            </tr>
+                            <tr>
+                                <th>No. Rek.</th>
+                                <td>{{$payment->no_rek}}</td>
+                            </tr>
+                        </table>
                     </div>
                     <form action="#" method="post">
                         @csrf
@@ -56,7 +68,7 @@
                             <i class="fa fa-shopping-cart"></i> Upload Bukti Pembayaran
                         </button>
                     </form>
-                    <p>Status Verifikasi Pembayaran: Sukses</p>
+                    <p>Status Verifikasi Pembayaran: <span>{{$transaction->status}}</span></p>
                 </div>
             </div>
         </div>

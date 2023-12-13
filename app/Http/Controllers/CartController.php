@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CartItem;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,10 @@ class CartController extends Controller
             }
             else {
                 $items = CartItem::where(['id_cart' => $cart->id])->get();
+                $payment_methods = PaymentMethod::get();
                 $data =[
                     'items' => $items,
+                    'payment_methods' => $payment_methods,
                 ];
                 return view('frontend.pages.cart', $data);
             }
