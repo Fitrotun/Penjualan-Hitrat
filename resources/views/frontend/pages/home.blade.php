@@ -18,7 +18,7 @@
 							</div>
 							<br>
 							<div class="container-searchbar">
-								<form action="/product/search" method="GET" class="searchbar" role="search">
+								<form action="{{ url('search') }}" method="GET" class="searchbar" role="search">
 									<input type="search" name="search" id="searchbar" value="" placeholder="Cari Product! ">
 									<button type="submit"> <img src={{ asset('assets/img/search.png') }} alt=""></button>
 								</form>

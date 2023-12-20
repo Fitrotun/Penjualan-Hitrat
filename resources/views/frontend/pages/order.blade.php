@@ -1,11 +1,13 @@
 @extends('frontend.include.base')
-
+@section('title','Detail Order')
 @section('content')
+@include('frontend.include.partial_nav')
+<br><br><br><br><br>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10 mb-3 mt-3">
+        {{-- <div class="col-md-10 mb-3 mt-3">
             <img src="{{ asset('assets/img/fot-log.png') }}" class="rounded mx-auto d-block" width="150" alt="">
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
@@ -60,7 +62,9 @@
                             </tr>
                         </table>
                     </div>
-                    <form action="#" method="post">
+               
+                    <form action="/upload/{{ $item->id }}" method="post" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         <input type="file" name="bukti_pembayaran" id="" class="mt-2 mb-2">
                         <br>
@@ -74,4 +78,5 @@
         </div>
     </div>
 </div>
+<br><br><br><br><br>
 @endsection

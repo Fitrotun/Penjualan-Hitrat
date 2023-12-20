@@ -1,11 +1,20 @@
 @extends('frontend.include.base')
 
 @section('content')
+@include('frontend.include.nav')
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10 mb-3 mt-3">
+        {{-- <div class="col-md-10 mb-3 mt-3">
             <img src="{{ asset('assets/img/fot-log.png') }}" class="rounded mx-auto d-block" width="150" alt="">
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
@@ -17,7 +26,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jumlah</th>
                                 <th>Harga</th>
-                                <th>total</th>
+                                <th>Total</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -92,4 +101,7 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
 @endsection

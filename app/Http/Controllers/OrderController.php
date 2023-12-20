@@ -6,7 +6,11 @@ use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\PaymentMethod;
+use App\Models\Product;
+use App\Models\User;
+use App\Models\Cart;
 use App\Models\Transaction;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -140,5 +144,49 @@ class OrderController extends Controller
         //generate nama file
         //pindah file
         //update status
+    }
+    // upload bukti transaksi
+	public function epesan(Request $request, $id)
+    {
+        $transaction= Transaction::find($id);
+        if($request->hasFile('image')){
+            $request->validate([
+                'image' => 'required|image|mimes:png,jpg|max:2040'
+            ]);
+        
+        $image = $request->image;
+        $slug = Str::slug($image->getClientOriginalName());
+        $new_image = time() .'_'. $slug;
+        $image->move('uploads/transaksi/', $new_image);
+        $transaction->image = 'uploads/transaksi/'.$new_image;
+        }
+
+        $transaction->save();
+
+        return redirect('/konfirmasi');
+    }
+    // konfirmasi
+    public function konfirmasi()
+    {
+        $user = User::where('id', session('id'))->first();
+
+        if(empty($user->password))
+        {
+            return redirect('profile');
+        }
+
+        $cart = Cart::where('id_user', session('id'))->where('status',0)->first();
+        $id_cart = $cart->id;
+        $cart->status = 1;
+        $cart->update();
+
+        $transaction = Transaction::where('id_cart', $id_cart)->get();
+        foreach ($transaction as $transaksi) {
+            $product = Product::where('id', $transaksi->id_product)->first();
+            // $wisata->stok = $wisata->stok-$transaksi->jumlah;
+            $product->update();
+        }
+
+        return redirect('/history');
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('frontend.include.nav')
+@include('frontend.include.partial_nav')
 
     <br>
     <div class="container">
@@ -54,43 +54,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="container" style="margin-bottom: 20px;">
-                            <div class="card border-0" style="background-color: #cdcdcd">
-                                <div class="card-body p-lg-4">
-                                    <h2 class="card-title fw-bold mb-2">Tambah Ulasan</h2>
-                                    <div class="card border-0" style="background-color: #ffffff">
-                                        <div class="card-body p-lg-4">
-                                            <form action="/komen/{{ $products->id }}" method="post" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="user">
-                                                    <div class="row row-cols-auto mb-2">
-                                                        <div class="col-md-11">
-                                                            <div class="form-group row">
-                                                            <label class="col fw-bold">Komentar</label>
-                                                            <div class="card-text sm-14 p-2 align-baseline">
-                                                                <input class="form-control" name="description" type="text"/>
-                                                                @error('description')
-                                                                    <code>
-                                                                        {{ $message }}
-                                                                    </code>
-                                                                @enderror
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <input type="submit" class="btn btn-primary offset-md-10" value="Submit">
-                                            </form>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
              </div>
             </div>
         </div>
     </div>
+    <br><br><br>
 @endsection

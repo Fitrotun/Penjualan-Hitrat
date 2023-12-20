@@ -105,7 +105,6 @@ body{margin-top:20px;}
 
 
 
-
 /*  */
 html {
   font-size: 14px;
@@ -2333,8 +2332,7 @@ a.video-play-btn {
   position: absolute;
   right: 0;
   top: 0;
-  left: 2;
-  width: 30%;
+  width: 40%;
   height: 100%;
   content: "";
   background-size: cover;

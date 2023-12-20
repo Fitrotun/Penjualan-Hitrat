@@ -69,7 +69,9 @@
 							<li><a href="https://linktr.ee/hitrat.indonesia"  target="_blank"><i class="fas fa-link"></i></a></li>
 							<li><a href="https://www.instagram.com/hitrat.indonesia" target="_blank"><i class="fab fa-instagram"></i></a></li>
 							<li><a href="whatsapp://send?text=Hello&phone=+628122822578" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-							
+							<li><a href="https://vt.tiktok.com/ZSNVTWr5F/" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+							<li><a href="https://vt.tiktok.com/ZSNVTEkHF/" target="_blank"><i class="fa-solid fa-shop"></i></a></li>
+
 						</ul>
 					</div>
 				</div>

@@ -13,7 +13,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 
@@ -43,11 +42,14 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin
 Route::resource('/admin', AdminController::class);
+Route::get('/transaksilist', [AdminController::class, 'transaction']);
+
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index']);
+
 // Category
 Route::resource('/category', CategoryController::class);
 
@@ -55,11 +57,11 @@ Route::resource('/category', CategoryController::class);
 Route::resource('/user', UserController::class);
 Route::get('/profile', PenggunaController::class);
 Route::post('/profile', [PenggunaController::class, 'update']);
-Route::get('/history',  [PenggunaController::class, 'index']);
-Route::get('/struk/{id}', [PenggunaController::class, 'struk']);
+
 
 // Faq
 Route::resource('/faq', FaqController::class);
+
 // Product
 Route::resource('/product', ProductController::class);
 Route::post('/product', [ProductController::class, 'store'])->name('product');
@@ -67,8 +69,8 @@ Route::get('/product', [ProductController::class,'index'])->name('product.index'
 Route::post('/product', [ProductController::class,'store'])->name('product.store');
 Route::post('/product', [ProductController::class, 'store'])->name('product');
 Route::get('/produk', [ProductController::class,'lindex']);
-Route::get('/product/search',[ProductController::class, 'search'] );
 Route::get('/detail_produk/{id}', [ProductController::class, 'show'])->name('detail_produk');
+Route::get('search',[ProductController::class, 'searchProduct']);
 
 // cart
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
@@ -81,8 +83,9 @@ Route::post('order/add', [OrderController::class, 'store'])->name('order.store')
 Route::get('order/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 
 // // transaksi
-Route::post('/pesan/{id}', [PenggunaController::class, 'pesan']);
+Route::put('/upload/{id}', [OrderController::class, 'epesan']);
+Route::get('/konfirmasi', [OrderController::class, 'konfirmasi']);
+// Route::get('/history',  [OrderController::class, 'index']);
 Route::get('/check_out', [PenggunaController::class, 'check_out']);
-Route::get('/konfirmasi', [PenggunaController::class, 'konfirmasi']);
-Route::get('/keranjang/{id}/delete', [PenggunaController::class, 'delete']);
+
 

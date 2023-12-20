@@ -20,7 +20,7 @@
 <center><div class="feature-bg">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-7">
+				<div class="col-lg-6">
 					<div class="featured-text">
 						<h2 class="pb-3">Kenapa <span class="orange-text">HitRat</span></h2>
 							<div class="row">

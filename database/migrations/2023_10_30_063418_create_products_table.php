@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->text('description')->nullable(true);
                 $table->string('rating');
                 $table->unsignedInteger('price')->default(0);
+                $table->integer('harga_diskon');
                 $table->integer('stok');
                 $table->timestamps();
             

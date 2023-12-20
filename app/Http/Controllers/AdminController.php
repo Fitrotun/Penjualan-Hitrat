@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin;
-
+use App\Models\Transaction;
 
 class AdminController extends Controller
 {
@@ -86,5 +86,14 @@ class AdminController extends Controller
          // toast('Your data has been deleted!','success');
          return redirect("/admin"); // untuk diarahkan kemana
      } 
+
+     // dashbord list transaksi - role admin
+    public function transaction()
+    {
+		$data ['title'] = 'Cart';
+        $data['transaction'] = Transaction::with('cart', 'product')->get();
+
+    	return view('backend.pages.admin.listTransaksi', $data);
+    }
      
 }

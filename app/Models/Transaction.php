@@ -26,4 +26,14 @@ class Transaction extends Model
 	{
 	      return $this->belongsTo(PaymentMethod::class, 'id_payment_method', 'id');
 	}
+
+    public function cart()
+	{
+	      return $this->belongsTo(Cart::class);
+	}
+
+    public function product()
+	{
+	      return $this->belongsTo(Product::class);
+	}
 }

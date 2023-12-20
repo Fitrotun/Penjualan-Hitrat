@@ -28,21 +28,20 @@
 						<p>Jika anda merasa bingung, tentang bagaimana cara memesan atau yang lainnya, silahkan untuk contact kami!</p>
 					</div>
 				 	<div id="form_status"></div>
-					<div class="contact-form">
-						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
-							<p>
-								<input type="text" placeholder="Name" name="name" id="name">
-								<input type="email" placeholder="Email" name="email" id="email">
-							</p>
-							<p>
-								<input type="tel" placeholder="Phone" name="phone" id="phone">
-								<input type="text" placeholder="Subject" name="subject" id="subject">
-							</p>
-							<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p>
-							<input type="hidden" name="token" value="FsWga4&@f6aw" />
-							<p><input type="submit" value="submit" class="btn submit_btn"><a href="mailto:idafitrotunkhasanah@gmail.com"></a></p>
-						</form>
-					</div>
+					 <div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">Email address</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+					  </div>
+					  <div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">Phone</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+					  </div>
+					  <div class="mb-3">
+						<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+					  </div>
+					  <p><a href="mailto:idafitrotunkhasanah@gmail.com"><input type="submit" value="submit" class="btn submit_btn"></a></p>
+					
 				</div>
 				<div class="col-lg-4">
 					<div class="contact-form-wrap">

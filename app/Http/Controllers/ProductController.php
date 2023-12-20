@@ -30,21 +30,31 @@ class ProductController extends Controller
 
      }
 
-     public function search(Request $request)
+    //  public function search(Request $request)
+    // {
+    //     // dd(request('search'));
+    //     if($request->has('search')){
+    //         $products =Product::where('name','LIKE','%'.$request->search.'%')->get();
+    //         // $searchProduct = Product::where('name', 'LIKE', '%'.$request->search.'%')->latest()->paginate(15);
+    //         // return view('frontend.pages.search', compact('searchProduct'));
+    //     }
+    //     else{
+    //         $products = Product::all();
+    //         // return redirect()->back()->with('message', 'Empty Search');
+    //     }
+    //     return view('frontend.pages.produk', ['products' =>$products]);
+    // }
+
+    public function searchProduct(Request $request)
     {
-        // dd(request('search'));
-        if($request->has('search')){
-            $products =Product::where('name','LIKE','%'.$request->search.'%')->get();
-            // $searchProduct = Product::where('name', 'LIKE', '%'.$request->search.'%')->latest()->paginate(15);
-            // return view('frontend.pages.search', compact('searchProduct'));
+        if($request->search){
+            $searchProduct = Product::where('name', 'LIKE', '%'.$request->search.'%')->latest()->paginate(15);
+            return view('frontend.pages.search', compact('searchProduct'));
         }
         else{
-            $products = Product::all();
-            // return redirect()->back()->with('message', 'Empty Search');
+            return redirect()->back()->with('message', 'Empty Search');
         }
-        return view('frontend.pages.home', ['products' =>$products]);
     }
-
 
     public function create()
     {
