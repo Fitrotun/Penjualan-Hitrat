@@ -54,6 +54,17 @@
                 </div>
             @enderror
         </div>
+        <div class="mt-3 mb-3">
+            <label for="floatingSelect">Rating</label>
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="rating">
+              <option selected>Open this select menu</option>
+              <option value="1">Bintang 1</option>
+              <option value="2">Bintang 2</option>
+              <option value="3">Bintang 3</option>
+              <option value="4">Bintang 4</option>
+              <option value="5">Bintang 5</option>
+            </select>
+          </div>
         <div class="mb-3">
             <label for="price" class="form-label">Harga</label>
             <input type="text" class="form-control @error('price') is-invalid @enderror" id="exampleInputEmail1"
@@ -77,7 +88,7 @@
         <div class="mb-3">
             <label for="stok" class="form-label">Stok</label>
             <input type="text" class="form-control @error('stok') is-invalid @enderror" id="exampleInputEmail1"
-            aria-describedby="emailHelp" name="stok placeholder="stok" >
+            aria-describedby="emailHelp" name="stok" placeholder="stok" >
             @error('stok')
                 <div class="invalid-feedback">
                     Stok tidak boleh kosong

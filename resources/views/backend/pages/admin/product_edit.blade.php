@@ -26,7 +26,7 @@
         <div class="mb-3">
             <label for="desk" class="from-label">Nama Product</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1"
-            aria-describedby="emailHelp" name="name" value="{{ $products->name }}" > 
+            aria-describedby="emailHelp" name="name" value="{{ $products->name }}" >
             @error('name')
                 <div class="invalid-feedback">
                     Nama tidak boleh kosong
@@ -42,8 +42,7 @@
 
         <div class="mb-3">
             <label for="desk" class="from-label">Deskripsi</label>
-            <input type="text" class="form-control @error('description') is-invalid @enderror"
-            id="exampleInputPassword1" name="description" value="{{ $products->description }}" > 
+            <textarea class="form-control" name="description" @error('description') is-invalid @enderror" placeholder="deskripsi"  id="" style="height: 150px">{{ $products->description }}</textarea>
             @error('description')
                 <div class="invalid-feedback">
                     Deskripsi tidak boleh kosong
@@ -60,6 +59,27 @@
                 </div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Discount Price</label>
+            <input type="text" class="form-control @error('price') is-invalid @enderror"
+                id="exampleInputPassword1" name="discount_price" value="{{ $products->discount_price }}">
+            @error('price')
+                <div class="invalid-feedback">
+                    Harga tidak boleh kosong
+                </div>
+            @enderror
+        </div>
+        <div class="mt-3 mb-3">
+            <label for="floatingSelect">Rating</label>
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="rating">
+              <option selected value="{{$products->rating}}">Bintang {{$products->rating}}</option>
+              <option value="1">Bintang 1</option>
+              <option value="2">Bintang 2</option>
+              <option value="3">Bintang 3</option>
+              <option value="4">Bintang 4</option>
+              <option value="5">Bintang 5</option>
+            </select>
+          </div>
         <div class="mb-3">
             <label for="stok" class="form-label">Stok</label>
             <input type="text" class="form-control @error('stok') is-invalid @enderror"
@@ -94,5 +114,5 @@
     </div>
   </div>
 </div>
-    
+
 @endsection

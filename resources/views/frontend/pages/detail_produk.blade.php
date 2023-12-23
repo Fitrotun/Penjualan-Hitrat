@@ -29,7 +29,7 @@
                                     <tr>
                                         <td>Harga</td>
                                         <td>:</td>
-                                        <td>Rp. {{ number_format($products->price) }}</td>
+                                        <td> <font size="3" color="gray" class="product-price" style="text-decoration: line-through;">Rp. {{ $products->price }}</font> <strong><font size="4" color="orange" class="harga-diskon"> Rp. {{ $products->discount_price}}</font></strong></td>
                                     </tr>
 
                                     <tr>

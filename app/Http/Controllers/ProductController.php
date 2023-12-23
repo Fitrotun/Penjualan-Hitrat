@@ -75,6 +75,8 @@ class ProductController extends Controller
             'image'=> 'required|image|mimes:png,jpg|max:2040',
             'description' => 'required',
             'price' => 'required',
+            'discount_price' => 'required',
+            'rating' => 'required',
             'id_category' => 'required'
         ]);
 
@@ -93,6 +95,9 @@ class ProductController extends Controller
         $products->name= $request->name;
         $products->description= $request->description;
         $products->price = $request->price;
+        $products->discount_price = $request->discount_price;
+        $products->rating = $request->rating;
+        $products->stok = $request->stok;
         $products->id_category = $request->id_category;
         $products->save();
 
@@ -126,9 +131,12 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'image' => 'required',
+            'image' => 'image|mimes:png,jpg|max:2040',
             'description' => 'required',
             'price' => 'required',
+            'discount_price' => 'required',
+            'stok' => 'required',
+            'rating' => 'required',
             'id_category' => 'required'
         ]);
 
@@ -149,6 +157,7 @@ class ProductController extends Controller
         $products->name= $request->name;
         $products->description= $request->description;
         $products->price = $request->price;
+        $products->discount_price = $request->discount_price;
         $products->id_category = $request->id_category;
         $products->save();
 
