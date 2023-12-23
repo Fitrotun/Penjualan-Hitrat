@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            
+
                 $table->id();
                 $table->unsignedBigInteger('id_category');
                 $table->foreign('id_category')->references('id')->on('categories')->onDelete('cascade');
@@ -20,11 +20,11 @@ return new class extends Migration
                 $table->string('name');
                 $table->text('description')->nullable(true);
                 $table->string('rating');
-                $table->unsignedInteger('price')->default(0);
-                $table->integer('harga_diskon');
+                $table->float('price', 10,3);
+                $table->float('discount_price', 10, 3);
                 $table->integer('stok');
                 $table->timestamps();
-            
+
         });
     }
 
