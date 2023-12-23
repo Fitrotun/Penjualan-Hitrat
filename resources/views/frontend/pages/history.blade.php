@@ -11,16 +11,6 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                        </div>
-                    @endif
                     <h3><i class="fa fa-shopping-cart"></i> Detail Order</h3>
                     <p>Pelanggan: <span>{{$order->user->name}}</span></p>
                     <p>Tanggal Order: <span>{{$order->order_date}}</span></p>
@@ -55,35 +45,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div>
-                        <h4>Metode Pembayaran</h4>
-                        <table>
-                            <tr>
-                                <th>Bank</th>
-                                <td>{{$payment->nama_bank}}</td>
-                            </tr>
-                            <tr>
-                                <th>Nama</th>
-                                <td>{{$payment->nama_rek}}</td>
-                            </tr>
-                            <tr>
-                                <th>No. Rek.</th>
-                                <td>{{$payment->no_rek}}</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    @if ($order->status == 'menunggu pembayaran')
-                    <form action="/upload/{{ $item->order->id }}" method="post" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <input type="file" name="bukti_pembayaran" id="" class="mt-2 mb-2">
-                        <br>
-                        <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin akan Check Out ?');">
-                            <i class="fa fa-shopping-cart"></i> Upload Bukti Pembayaran
-                        </button>
-                    </form>
-                    @endif
                     <p>Status Verifikasi Pembayaran: <span>{{$order->status}}</span></p>
                 </div>
             </div>

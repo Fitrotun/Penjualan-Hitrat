@@ -81,9 +81,10 @@ class ProductController extends Controller
 
         //upload image
         $image = $request->image;
-        $image = $request->image;
-        $slug = ($image->getClientOriginalName());
-        $new_image = time() .'_'. $slug;
+        $fileNameWithoutExtension = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+        $slug = Str::slug($fileNameWithoutExtension);
+        $fileExtension = $image->getClientOriginalExtension();
+        $new_image = time() .'_'. $slug. ".". $fileExtension;
         $image->move('uploads/product/' ,$new_image);
 
 
@@ -94,6 +95,8 @@ class ProductController extends Controller
         $products->price = $request->price;
         $products->id_category = $request->id_category;
         $products->save();
+
+
 
         return to_route('product.index');
 

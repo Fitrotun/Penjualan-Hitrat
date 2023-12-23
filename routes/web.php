@@ -83,9 +83,11 @@ Route::post('order/add', [OrderController::class, 'store'])->name('order.store')
 Route::get('order/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 
 // // transaksi
-Route::put('/upload/{id}', [OrderController::class, 'epesan']);
+// Route::put('/upload/{id}', [OrderController::class, 'epesan']);
+Route::put('/upload/{id}', [OrderController::class, 'uploadPembayaran']);
 Route::get('/konfirmasi', [OrderController::class, 'konfirmasi']);
-// Route::get('/history',  [OrderController::class, 'index']);
+Route::get('/history',  [OrderController::class, 'history'])->name('order.history');
+Route::get('/history/{id}',  [OrderController::class, 'detailHistory'])->name('order.history.detail');
 Route::get('/check_out', [PenggunaController::class, 'check_out']);
 
 

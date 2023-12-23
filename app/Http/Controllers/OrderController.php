@@ -12,6 +12,7 @@ use App\Models\Cart;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class OrderController extends Controller
 {
@@ -136,57 +137,62 @@ class OrderController extends Controller
         return redirect(route('order.index'));
     }
 
-    public function uploadPembayaran(Request $request) {
+    public function uploadPembayaran($id, Request $request) {
         $valReq = $request->validate([
-            'bukti_pembayaran' => ['required']
+            'bukti_pembayaran' => ['required', 'image', 'mimes:png,jpg', 'max:2048']
         ]);
 
-        //generate nama file
-        //pindah file
-        //update status
-    }
-    // upload bukti transaksi
-	public function epesan(Request $request, $id)
-    {
-        $transaction= Transaction::find($id);
-        if($request->hasFile('image')){
-            $request->validate([
-                'image' => 'required|image|mimes:png,jpg|max:2040'
-            ]);
-        
-        $image = $request->image;
-        $slug = Str::slug($image->getClientOriginalName());
-        $new_image = time() .'_'. $slug;
-        $image->move('uploads/transaksi/', $new_image);
-        $transaction->image = 'uploads/transaksi/'.$new_image;
+        $transaction = Transaction::where('id_order', $id)->first();
+
+        if($transaction->bukti_pembayaran) {
+            File::delete($transaction->bukti_pembayaran);
         }
 
+        $image = $valReq['bukti_pembayaran'];
+        $fileNameWithoutExtension = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+        $slug = Str::slug($fileNameWithoutExtension);
+        $fileExtension = $image->getClientOriginalExtension();
+        $newFileName = $slug . '.' . $fileExtension;
+        $new_image = $transaction->id .'_'. $newFileName;
+        $image->move('uploads/transaksi/', $new_image);
+
+        $transaction->bukti_pembayaran = 'uploads/transaksi/'.$new_image;
         $transaction->save();
 
-        return redirect('/konfirmasi');
+        $order = Order::where('id', $id)->first();
+        $order->status = OrderController::VERIFIKASI_PEMBAYARAN;
+        $order->save();
+
+        return redirect(route('order.index'));
     }
-    // konfirmasi
-    public function konfirmasi()
-    {
-        $user = User::where('id', session('id'))->first();
 
-        if(empty($user->password))
-        {
-            return redirect('profile');
+    public function history() {
+        $orders = Order::where(['id_user' => session('id'), 'status' => 'sukses'])->orWhere(['status' => 'gagal'])->get();
+
+        $data = [
+            'orders' => $orders,
+        ];
+
+        return view('frontend.pages.history-list', $data);
+    }
+
+    public function detailHistory($id) {
+        if(session('id') != null){
+            $order = Order::where(['id' => $id])->first();
+            if($order == null) {
+                return redirect(route('cart.show'));
+            }
+            else {
+                $orderItems = OrderItem::where(['id_order' => $id])->get();
+                $data =[
+                    'order' => $order,
+                    'orderItems' => $orderItems,
+                ];
+                return view('frontend.pages.history', $data);
+            }
         }
-
-        $cart = Cart::where('id_user', session('id'))->where('status',0)->first();
-        $id_cart = $cart->id;
-        $cart->status = 1;
-        $cart->update();
-
-        $transaction = Transaction::where('id_cart', $id_cart)->get();
-        foreach ($transaction as $transaksi) {
-            $product = Product::where('id', $transaksi->id_product)->first();
-            // $wisata->stok = $wisata->stok-$transaksi->jumlah;
-            $product->update();
+        else {
+            return redirect("/");
         }
-
-        return redirect('/history');
     }
 }
