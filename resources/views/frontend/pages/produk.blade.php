@@ -35,14 +35,14 @@
 								</p>
 								{{-- <a href="/detail_produk/{{ $p->id }}" class="item"><i class="item-primary me-0"></i>Selengkapnya</a> --}}
 								<font size="3" color="gray" class="product-price" style="text-decoration: line-through;">Rp. {{ $p->price }}</font>
-								<strong><font size="4" color="orange" class="harga-diskon"> Rp. {{ $p->harga_diskon}}</font></strong><br>
+								<strong><font size="4" color="orange" class="harga-diskon"> Rp. {{ $p->discount_price}}</font></strong><br>
 								<strong>Stok :</strong> {{ $p->stok }} <br><br>
 								<ul>
 									<a href="/detail_produk/{{ $p->id }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Pesan</a><br><br>
 									<a href="https://s.lazada.co.id/s.nM8Ol" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Lazada</a><br><br>
 									<a href="https://shp.ee/6weg9zr" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Shopee</a><br><br>
 									<a href="https://tokopedia.link/l1aok6q48Eb" target="_blank" class="cart-btn"><i class="fas fa-shopping-cart"></i> Tokopedia</a>
-									
+
 								</ul>
 
 							</div>

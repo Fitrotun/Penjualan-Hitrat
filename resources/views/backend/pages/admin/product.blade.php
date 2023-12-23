@@ -26,6 +26,9 @@
                   Harga
                 </th>
                 <th>
+                  Harga Diskon
+                </th>
+                <th>
                   Stok
                 </th>
                 <th>
@@ -57,6 +60,9 @@
                 <td>
                   {{ $i->price}}
                 </td>
+                <td>
+                    {{ $i->discount_price}}
+                  </td>
                 <td>
                   {{ $i->stok}}
                 </td>
