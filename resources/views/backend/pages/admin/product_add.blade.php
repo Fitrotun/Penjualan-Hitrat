@@ -5,7 +5,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Tambah Product</h4>
-             
+
         @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -46,8 +46,7 @@
 
         <div class="mt-3 mb-3">
             <label for="description" class="from-label">Deskripsi</label>
-            <input type="text" class="form-control @error('description') is-invalid @enderror" id="exampleInputEmail1"
-            aria-describedby="emailHelp" name="description" placeholder="deskripsi" >
+            <textarea class="form-control" name="description" @error('description') is-invalid @enderror" placeholder="deskripsi"  id="" style="height: 150px"></textarea>
 
             @error('description')
                 <div class="invalid-feedback">
@@ -60,6 +59,16 @@
             <input type="text" class="form-control @error('price') is-invalid @enderror" id="exampleInputEmail1"
             aria-describedby="emailHelp" name="price" placeholder="price" >
             @error('price')
+                <div class="invalid-feedback">
+                    Harga tidak boleh kosong
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Harga Diskon</label>
+            <input type="text" class="form-control @error('price') is-invalid @enderror" id="exampleInputEmail1"
+            aria-describedby="emailHelp" name="discount_price" placeholder="price" >
+            @error('discount_price')
                 <div class="invalid-feedback">
                     Harga tidak boleh kosong
                 </div>
@@ -89,15 +98,15 @@
                 </div>
             @enderror
         </div>
-    
+
         <div class="mt-4 col-12">
         <button type="submit" class="btn btn-primary me-2">Submit</button>
         <button class="btn btn-light">Cancel</button>
         </div>
-         
+
       </form>
     </div>
   </div>
 </div>
-    
+
 @endsection

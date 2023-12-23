@@ -63,11 +63,11 @@ Route::post('/profile', [PenggunaController::class, 'update']);
 Route::resource('/faq', FaqController::class);
 
 // Product
-Route::resource('/product', ProductController::class);
+// Route::resource('/product', ProductController::class);
 Route::post('/product', [ProductController::class, 'store'])->name('product');
 Route::get('/product', [ProductController::class,'index'])->name('product.index');
+Route::get('/product/create', [ProductController::class,'create'])->name('product.create');
 Route::post('/product', [ProductController::class,'store'])->name('product.store');
-Route::post('/product', [ProductController::class, 'store'])->name('product');
 Route::get('/produk', [ProductController::class,'lindex']);
 Route::get('/detail_produk/{id}', [ProductController::class, 'show'])->name('detail_produk');
 Route::get('search',[ProductController::class, 'searchProduct']);
