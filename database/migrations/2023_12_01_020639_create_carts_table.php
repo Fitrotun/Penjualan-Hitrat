@@ -14,11 +14,7 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->date('tanggal');
-            $table->string('status');
-            $table->integer('kode');
-            $table->integer('jumlah_harga');
+            $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
