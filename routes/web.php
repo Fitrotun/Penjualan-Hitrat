@@ -47,6 +47,7 @@ Route::resource('/admin', AdminController::class);
 Route::get('transaksi', [AdminTransaksiController::class, 'index'])->name('transaksi.index');
 Route::get('transaksi/{id}/edit', [AdminTransaksiController::class, 'edit'])->name('transaksi.edit');
 Route::put('transaksi/{id}', [AdminTransaksiController::class, 'updateStatus'])->name('transaksi.updateStatus');
+Route::get('transaksi/report', [AdminTransaksiController::class, 'printReport'])->name('transaksi.printReport');
 
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about');

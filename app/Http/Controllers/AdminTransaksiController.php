@@ -54,4 +54,14 @@ class AdminTransaksiController extends Controller
 
         return redirect(route('transaksi.index'));
     }
+
+    public function printReport(){
+        $orders = Order::get();
+
+        $data = [
+            'orders' => $orders
+        ];
+
+        return view('backend.pages.admin.transaksi.report', $data);
+    }
 }

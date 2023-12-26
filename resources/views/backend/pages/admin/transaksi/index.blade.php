@@ -6,7 +6,10 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Daftar Transaksi</h4>
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title">Daftar Transaksi</h4>
+            <a href="{{route('transaksi.printReport')}}" class="block">Cetak Report</a>
+        </div>
 
         <div class="table-responsive" id="order-list">
           <div class="mt-2 mb-2 d-flex gap-3">
