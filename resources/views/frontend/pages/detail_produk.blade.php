@@ -38,6 +38,7 @@
                                         <td>{{ $products->description }}</td>
                                     </tr>
 
+                                    @if (session('id') != null)
                                     <tr>
                                         <td>Jumlah Pesan</td>
                                         <td>:</td>
@@ -51,6 +52,13 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    @else
+                                    <tr>
+                                        <td colspan="3">
+                                            <h5><strong>Anda harus login terlebih dahulu untuk memesan</strong></h5>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
