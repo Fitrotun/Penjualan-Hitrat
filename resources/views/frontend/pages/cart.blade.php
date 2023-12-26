@@ -38,8 +38,8 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->product->name }}</td>
                                 <td>{{ $item->quantity }}</td>
-                                <td>Rp. {{ number_format($item->product->price) }}</td>
-                                <td>Rp. {{number_format($item->product->price*$item->quantity)}}</td>
+                                <td>Rp. {{ number_format($item->product->discount_price) }}</td>
+                                <td>Rp. {{number_format($item->product->discount_price*$item->quantity)}}</td>
                                 <td>
                                     <a href="{{route('cart.item.destroy', $item->id)}}">
                                         <button class="btn btn-danger" type="button"><i class="fa-solid fa-trash"></i></button>
@@ -47,7 +47,7 @@
                                 </td>
                             </tr>
                             @php
-                                $total_harga += ($item->product->price*$item->quantity);
+                                $total_harga += ($item->product->discount_price*$item->quantity);
                                 $p = [];
                                 $p['id_product'] = $item->product->id;
                                 $p['quantity'] = $item->quantity;
