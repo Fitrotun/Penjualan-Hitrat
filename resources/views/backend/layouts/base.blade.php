@@ -29,14 +29,14 @@
     @include('backend.layouts.nav')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      
+
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       @include('backend.layouts.slidebar')
       <!-- partial:partials/_settings-panel.html -->
-      
+
       <!-- partial -->
-      
+
         <div class="content-wrapper">
           <div class="row">
             @yield('content')
@@ -52,7 +52,7 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-		
+
 
 
 		<!-- plugins:js -->

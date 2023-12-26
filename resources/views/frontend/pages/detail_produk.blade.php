@@ -10,9 +10,22 @@
         <div class="col-md-10 mt-4">
             <div class="card">
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-6 mt-5">
                             <img width="300px" height="300px" src="{{ asset($products->image) }}" alt="" class="rounded mx-auto d-block" width="100%" alt="">
+                            <p class="ps-4 pe-4 pt-2">
+                                {{ $products->description }}
+                            </p>
                         </div>
                         <div class="col-md-5 mt-3">
                             <h2>{{ $products->name }}</h2>
@@ -31,11 +44,10 @@
                                         <td>:</td>
                                         <td> <font size="3" color="gray" class="product-price" style="text-decoration: line-through;">Rp. {{ $products->price }}</font> <strong><font size="4" color="orange" class="harga-diskon"> Rp. {{ $products->discount_price}}</font></strong></td>
                                     </tr>
-
                                     <tr>
-                                        <td>Keterangan</td>
+                                        <td>Stok</td>
                                         <td>:</td>
-                                        <td>{{ $products->description }}</td>
+                                        <td>{{ $products->stok }}</td>
                                     </tr>
 
                                     @if (session('id') != null)

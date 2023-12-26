@@ -19,6 +19,16 @@
             <div class="card">
                 <div class="card-body">
                     <h3><i class="fa fa-shopping-cart"></i> Keranjang</h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                        </div>
+                    @endif
                     <table class="table table-striped">
                         <thead>
                             <tr>

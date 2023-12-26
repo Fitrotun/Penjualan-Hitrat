@@ -20,6 +20,10 @@ class Order extends Model
 	}
     public function orderitem()
 	{
-	     return $this->hasMany(OrderItem::class);
+	     return $this->hasMany(OrderItem::class, 'id_order', 'id');
 	}
+
+    public function transaction(){
+        return $this->hasOne(Transaction::class, 'id_order', 'id');
+    }
 }

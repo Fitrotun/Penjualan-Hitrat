@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CartItem;
 use App\Models\PaymentMethod;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,12 @@ class CartController extends Controller
             'id_product' => ['required'],
             'quantity' => ['required'],
         ]);
+
+        $product = Product::where('id', $validated['id_product'])->first();
+
+        if($product->stok < $validated['quantity']) {
+            return back()->withErrors('Out of stock!!!');
+        }
 
         $cart = Cart::firstOrCreate(['id_user' => $validated['id_user']]);
 

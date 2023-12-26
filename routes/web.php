@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -42,7 +43,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin
 Route::resource('/admin', AdminController::class);
-Route::get('/transaksilist', [AdminController::class, 'transaction']);
+// Route::get('/transaksilist', [AdminController::class, 'transaction']);
+Route::get('transaksi', [AdminTransaksiController::class, 'index'])->name('transaksi.index');
+Route::get('transaksi/{id}/edit', [AdminTransaksiController::class, 'edit'])->name('transaksi.edit');
+Route::put('transaksi/{id}', [AdminTransaksiController::class, 'updateStatus'])->name('transaksi.updateStatus');
 
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about');

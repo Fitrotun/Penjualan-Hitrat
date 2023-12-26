@@ -20,11 +20,11 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('category')}}">Categori</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('product')}}">Product</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('transaksilist')}}">List Transaksi</a></li>
-            
+            <li class="nav-item"> <a class="nav-link" href="{{route('transaksi.index')}}">Transaksi</a></li>
+
           </ul>
         </div>
-      
-          
+
+
         </ul>
 </nav>
